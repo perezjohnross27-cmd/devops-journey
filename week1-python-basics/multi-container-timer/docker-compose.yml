@@ -1,0 +1,15 @@
+version: "3.8"
+services: 
+  timer: 
+    build: .
+    stdin_open: true
+    tty: true
+
+  web:  
+    image: python:3.11-slim
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./web:/app
+    working_dir: /app
+    command: python -m http.server 8000
